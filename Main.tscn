@@ -1,0 +1,109 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Graphics/Background.png" type="Texture" id=1]
+[ext_resource path="res://Graphics/Hoop.png" type="Texture" id=2]
+[ext_resource path="res://Graphics/Ball.png" type="Texture" id=3]
+[ext_resource path="res://Graphics/Robot.png" type="Texture" id=4]
+[ext_resource path="res://Graphics/Net.png" type="Texture" id=5]
+[ext_resource path="res://Main.gd" type="Script" id=6]
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 1.76623, 35.8843 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 425, 14 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 21.25, 261.5 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 6.5, 10 )
+
+[sub_resource type="PhysicsMaterial" id=3]
+friction = 0.3
+bounce = 0.58
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 18.1108
+
+[node name="Root" type="Node"]
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_horizontal_guides_": [  ]
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="BodyHoop" type="StaticBody2D" parent="."]
+position = Vector2( 0, 3 )
+
+[node name="Hoop" type="Sprite" parent="BodyHoop"]
+position = Vector2( 831, 304 )
+texture = ExtResource( 2 )
+
+[node name="ShapeBackboard" type="CollisionShape2D" parent="BodyHoop"]
+position = Vector2( 873, 190 )
+shape = SubResource( 5 )
+
+[node name="ShapeNet1" type="CollisionShape2D" parent="BodyHoop"]
+position = Vector2( 784.455, 247.889 )
+rotation = -0.284033
+shape = SubResource( 5 )
+
+[node name="ShapeNet2" type="CollisionShape2D" parent="BodyHoop"]
+position = Vector2( 841.903, 244.561 )
+rotation = 0.214237
+shape = SubResource( 5 )
+
+[node name="Robot" type="Sprite" parent="."]
+position = Vector2( 464, 360 )
+texture = ExtResource( 4 )
+
+[node name="BodyGround" type="StaticBody2D" parent="."]
+
+[node name="ShapeGround" type="CollisionShape2D" parent="BodyGround"]
+position = Vector2( 428, 458 )
+shape = SubResource( 2 )
+
+[node name="ShapeWall" type="CollisionShape2D" parent="BodyGround"]
+position = Vector2( 1000.25, 269.5 )
+shape = SubResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BodyGround"]
+position = Vector2( 463, 260 )
+shape = SubResource( 6 )
+
+[node name="BodyBall" type="RigidBody2D" parent="."]
+position = Vector2( 467, 234 )
+physics_material_override = SubResource( 3 )
+
+[node name="SpriteBall" type="Sprite" parent="BodyBall"]
+position = Vector2( 1, 2 )
+texture = ExtResource( 3 )
+
+[node name="ShapeBall" type="CollisionShape2D" parent="BodyBall"]
+position = Vector2( 0, 1 )
+shape = SubResource( 1 )
+
+[node name="Net" type="Sprite" parent="."]
+position = Vector2( 811, 252 )
+texture = ExtResource( 5 )
+
+[node name="ButtonShoot" type="Button" parent="."]
+margin_left = 897.0
+margin_top = 27.0
+margin_right = 997.0
+margin_bottom = 74.0
+text = "Shoot"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="ButtonShoot" to="." method="_on_ButtonShoot_pressed"]
