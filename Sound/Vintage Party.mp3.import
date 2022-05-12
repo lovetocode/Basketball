@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Vintage Party.mp3-f2800d65eb39997c9a8741e0e2f4bce6.mp3str"
+
+[deps]
+
+source_file="res://Sound/Vintage Party.mp3"
+dest_files=[ "res://.import/Vintage Party.mp3-f2800d65eb39997c9a8741e0e2f4bce6.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

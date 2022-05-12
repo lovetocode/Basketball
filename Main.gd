@@ -14,6 +14,8 @@ func _ready():
 	$Sliders/HSliderAngle.value = Global.angle
 	$Sliders/HSliderForce.value = Global.force
 	$Score.text = "Score: " + str(Global.score)
+	$Music.play()
+	
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -66,6 +68,14 @@ func get_impulse_vector(angle, size):
 	return out
 			
 			
+func _on_Stop_Music_pressed():
+	$Music.stop()
+
+func _on_Start_Music_pressed():
+	$Music.play()
+
+		
+	
 
 
 	
@@ -79,4 +89,8 @@ func get_impulse_vector(angle, size):
 
 
 	
+
+
+
+
 
