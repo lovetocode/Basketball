@@ -6,10 +6,15 @@ var x
 var y
 var count = 0
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var initial_x = $BodyBall.position.x 
 	var initial_y = $BodyBall.position.y
+	$Sliders/HSliderAngle.value = Global.angle
+	$Sliders/HSliderForce.value = Global.force
+	$Score.text = "Score: " + str(Global.score)
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -28,7 +33,8 @@ func _process(delta):
 	if (x > 790) && (x < 850) && (y > 217) && (y < 260):
 		if (!$AudioApplause.playing):
 			$AudioApplause.play()
-
+			Global.score += 1
+			$Score.text = "Score: " + str(Global.score)
 
 func _on_ButtonShoot_pressed():
 	
@@ -36,12 +42,12 @@ func _on_ButtonShoot_pressed():
 	var impulse
 	
 	#get the angle and the vector
-	var angle = $Sliders/HSliderAngle.value
-	var force = $Sliders/HSliderForce.value
+	Global.angle = $Sliders/HSliderAngle.value
+	Global.force = $Sliders/HSliderForce.value
 	
 	#calculate the impulse
 	offset = Vector2(0,0) #Hit the ball at the center
-	impulse = get_impulse_vector(angle, force)
+	impulse = get_impulse_vector(Global.angle, Global.force)
 	
 	$BodyBall.apply_impulse(offset,impulse)
 	
@@ -58,6 +64,10 @@ func get_impulse_vector(angle, size):
 	var out = Vector2(fx, fy)
 	
 	return out
+			
+			
+
+
 	
 	
 	

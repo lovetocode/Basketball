@@ -87,7 +87,7 @@ position = Vector2( 463, 260 )
 shape = SubResource( 6 )
 
 [node name="BodyBall" type="RigidBody2D" parent="."]
-position = Vector2( 467, 234 )
+position = Vector2( 466, 231 )
 physics_material_override = SubResource( 3 )
 
 [node name="SpriteBall" type="Sprite" parent="BodyBall"]
@@ -161,6 +161,25 @@ margin_right = 200.0
 margin_bottom = 47.0
 max_value = 300.0
 ticks_on_borders = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="Sliders"]
+margin_left = 226.0
+margin_top = 9.0
+margin_right = 314.0
+margin_bottom = 35.0
+color = Color( 0.0941176, 0.0745098, 0.0745098, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Score" type="Label" parent="."]
+margin_left = 240.0
+margin_top = 15.0
+margin_right = 286.0
+margin_bottom = 30.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
